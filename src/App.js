@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import Job from './job'
 import data from './data.json'
+import deskimg from './images/bg-header-desktop.svg'
+import mobimg from './images/bg-header-mobile.svg'
+
 function App() {
   const [jobs,setJobs]=useState([]);
   const [filters,setFilters]=useState([]);
 
   useEffect(()=>setJobs(data),[]);
-
   const filterFun = (job)=>{
     const {role,level,tools,languages}=job
     if (filters.length===0){
@@ -22,21 +24,27 @@ function App() {
     setFilters([...filters,tag]);
    }
   const filteredJobs=jobs.filter(job=>filterFun(job))
-const removeFilter=f=>{
+  const removeFilter=f=>{
     setFilters(filters.filter(tag=>tag!==f))
   }
-
+  const headerimg= window.screen.width>600? deskimg: mobimg;
+  
   return (
     <div className="App">
       <header>
-        <img src='images/bg-header-desktop.svg' alt='header img' />
+        <img src={headerimg} alt='header img' />
       </header>
 
       <div className='filters'  >
-         {filters.length>0 ?
-          filters.map(f=><span className='tagfil'>{f}<span className='close' onClick={()=>removeFilter(f)}>x</span></span>)
+        <div className='tagfil'>
+          {filters.length>0 ?
+          filters.map(f=><span >{f}<span className='close' onClick={()=>removeFilter(f)}>x</span></span>)
           : 'Click on skills below to filter'}
-         {filters.length>0 && <span className='clear' onClick={()=>setFilters([])}>clear</span>}
+        </div>
+        <div className='clear'>
+          {filters.length>0 && <span  onClick={()=>setFilters([])}>clear</span>}
+        </div>
+         
       </div>
       <div className='body'>
         {filteredJobs.map(item=>{

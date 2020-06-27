@@ -33,7 +33,7 @@ header{
 
 .cardbody p{
     font-size: 12px;
-
+    
 }
 div>img{
     margin:10px;
@@ -43,6 +43,7 @@ div>img{
     justify-content: center;
     align-items: center;
     margin-left: auto;
+    flex-wrap: wrap;
 }
 .tools>span{
     background-color: hsl(180, 31%, 95%);
@@ -64,7 +65,7 @@ div>img{
     margin-left : 10px;
     border-radius: 15px;
     font-size: 10px;
-
+    
 }
 .featured{
     color:white;
@@ -77,18 +78,20 @@ div>img{
 .condstyle{
     border-left:5px solid  hsl(180, 14%, 20%);
 }
-.filters{
+.filters{  
+    display: flex;
     width:80%;
     margin:auto;
     z-index: 1;
     background-color: white;
     padding: 20px;
-}
+  }
 
 .clear{
-    float:right;
+    align-self: center;
+    justify-content: center;
     color: hsl(180, 29%, 50%);
-
+    width:8%;
 }
 .clear:hover{
     cursor: pointer;
@@ -97,9 +100,16 @@ div>img{
 }
 .tagfil{
     color: hsl(180, 29%, 50%);
+    width:92%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.tagfil>span{
     background-color: hsl(180, 31%, 95%);
     padding:5px 0 5px 5px;
     margin:5px;
+    border-radius: 5px;
+    flex-wrap: wrap;
 }
 .close{
     padding:5px 8px;
@@ -111,3 +121,43 @@ div>img{
     background-color: hsl(180, 14%, 20%);
     cursor:pointer;
 }
+
+@media (max-width:600px) {
+    .card{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width:95%;
+        margin : 30px auto ;
+        padding: 5px;
+    }
+    div>img{
+        position: absolute;
+        margin-top: -30px;    
+        width:50px;
+        height:50px;     
+    }
+    .cardbody{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin-top:30px;
+    }
+    .cardbody *{
+        padding:10px;
+    }
+    .tools{
+        margin-left: 10px;
+        justify-content:flex-start ;
+        font-size: 12px;
+    }
+    .filters{
+        width:95%;
+        font-size: 12px;
+    }
+    
+    .clear{
+        align-items: center;
+    }
+
+}    
