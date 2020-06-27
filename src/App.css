@@ -82,6 +82,8 @@ div>img{
     display: flex;
     width:80%;
     margin:auto;
+    margin-top: -30px;
+    position: relative;
     z-index: 1;
     background-color: white;
     padding: 20px;
@@ -107,7 +109,7 @@ div>img{
 .tagfil>span{
     background-color: hsl(180, 31%, 95%);
     padding:5px 0 5px 5px;
-    margin:5px;
+    margin:2px 5px;
     border-radius: 5px;
     flex-wrap: wrap;
 }
